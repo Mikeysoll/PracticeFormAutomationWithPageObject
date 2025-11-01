@@ -3,6 +3,9 @@ package tests;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import data.TestData;
+import helpers.Attach;
+import org.checkerframework.checker.units.qual.A;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.AfterEach;
@@ -32,5 +35,10 @@ public class TestBase {
     @AfterEach
     void tearDown() {
         Selenide.closeWebDriver();
+    }
+
+    @AfterEach
+    void addAtachments() {
+        Attach.screenshotAs("Last screenshot");
     }
 }
