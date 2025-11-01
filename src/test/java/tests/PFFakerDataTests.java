@@ -1,11 +1,13 @@
 package tests;
 
 import data.TestData;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 public class PFFakerDataTests extends TestBase{
 
     @Test
+    @Tag("demoqa")
     void fillFormTest() {
 
         formPage.openPage()
@@ -35,6 +37,7 @@ public class PFFakerDataTests extends TestBase{
     }
 
     @Test
+    @Tag("demoqa")
     void fillWithMinimalDataTest(){
 
         formPage.openPage()
@@ -52,6 +55,7 @@ public class PFFakerDataTests extends TestBase{
     }
 
     @Test
+    @Tag("demoqa")
     void negativeTest(){
         formPage.openPage()
                 .submitForm()
