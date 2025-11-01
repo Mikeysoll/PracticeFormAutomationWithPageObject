@@ -2,8 +2,10 @@ package tests;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.logevents.SelenideLogger;
 import data.TestData;
 import helpers.Attach;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.checkerframework.checker.units.qual.A;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
@@ -24,6 +26,10 @@ public class TestBase {
         Configuration.pageLoadStrategy = "eager";
         Configuration.holdBrowserOpen = false;
         Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide()
+                .screenshots(true)
+                .savePageSource(true));
     }
 
     @BeforeEach
