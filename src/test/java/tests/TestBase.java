@@ -23,6 +23,7 @@ public class TestBase {
         Configuration.timeout = 10000;
         Configuration.pageLoadStrategy = "eager";
         Configuration.holdBrowserOpen = false;
+        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
     }
 
     @BeforeEach
@@ -34,11 +35,7 @@ public class TestBase {
 
     @AfterEach
     void tearDown() {
-        Selenide.closeWebDriver();
-    }
-
-    @AfterEach
-    void addAtachments() {
         Attach.screenshotAs("Last screenshot");
+        Selenide.closeWebDriver();
     }
 }
