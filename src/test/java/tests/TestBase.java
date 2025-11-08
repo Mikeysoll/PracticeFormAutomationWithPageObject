@@ -30,9 +30,10 @@ public class TestBase {
         Configuration.holdBrowserOpen = false;
         Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
 
-        SelenideLogger.addListener("AllureSelenide", new AllureSelenide()
-                .screenshots(true)
-                .savePageSource(true));
+//  Отключено т.к. при падении теста задублировались бы скриншоты и pagesource
+//        SelenideLogger.addListener("AllureSelenide", new AllureSelenide()
+//                .screenshots(true)
+//                .savePageSource(true));
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
@@ -52,7 +53,7 @@ public class TestBase {
     @AfterEach
     void tearDown() {
         Attach.screenshotAs("Last screenshot");
-        Attach.pageSource();
+        Attach.pageSource("Page Source");
         Attach.browserConsoleLogs();
         Attach.addVideo();
     }

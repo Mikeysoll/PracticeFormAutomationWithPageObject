@@ -19,8 +19,8 @@ public class Attach {
         return ((TakesScreenshot) getWebDriver()).getScreenshotAs(OutputType.BYTES);
     }
 
-    @Attachment(value = "Page source", type = "text/plain")
-    public static byte[] pageSource() {
+    @Attachment(value = "{attachName}", type = "text/plain")
+    public static byte[] pageSource(String attachName) {
         return getWebDriver().getPageSource().getBytes(StandardCharsets.UTF_8);
     }
 

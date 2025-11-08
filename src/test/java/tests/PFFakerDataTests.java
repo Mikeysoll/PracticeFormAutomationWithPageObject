@@ -4,7 +4,7 @@ import data.TestData;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
-@Tag("demoqa")
+@Tag("faker")
 public class PFFakerDataTests extends TestBase{
 
     @Test
