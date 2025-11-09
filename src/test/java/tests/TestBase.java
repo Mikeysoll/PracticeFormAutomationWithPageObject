@@ -45,7 +45,6 @@ public class TestBase {
     void setUp() {
         formPage = new PracticeFormPage();
         testData = new TestData();
-        formPage.openPage();
     }
 
     @AfterEach
