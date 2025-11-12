@@ -22,7 +22,7 @@ public class TestBase {
     protected TestData testData;
 
     @BeforeAll
-    static void beforeAll() {
+    static void setupEnv() {
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
         Configuration.browser = System.getProperty("browser", "chrome");
@@ -30,8 +30,6 @@ public class TestBase {
         Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
         Configuration.remote= System.getProperty("remote",
                 "https://user1:1234@selenoid.autotests.cloud/wd/hub");
-        Configuration.timeout = 10000;
-        Configuration.holdBrowserOpen = false;
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
@@ -39,6 +37,9 @@ public class TestBase {
                 "enableVideo", true
         ));
         Configuration.browserCapabilities = capabilities;
+
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+
     }
 
     @BeforeEach
